@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sales Feedback</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: black;
+            color: white;
+            margin: 0;
+            padding: 0;
+            padding-top: 120px; /* Adjust based on your header height */
+        }
+        .header-container {
+            background-color: #00b8ff;
+            padding: 10px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            transform: scale(0.9); /* Reduce size by 10% */
+            transform-origin: top center;
+        }
+        .header {
+            text-align: center;
+        }
+        .header h1 {
+            margin: 0;
+            font-size: 24px; /* Adjust as needed */
+        }
+        .feedback-item {
+            cursor: pointer;
+            margin: 10px 0;
+            padding: 10px;
+            background-color: rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .feedback-item:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+        .feedback-content {
+            display: none;
+            padding: 10px;
+            background-color: rgba(255, 255, 255, 0.05);
+        }
+        .date-time {
+            text-align: right;
+            padding: 5px;
+            font-size: 14px; /* Adjust as needed */
+        }
+        .feedback-item img {
+            width: 50%;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="header-container">
+        <div class="date-time">DATE: 10 | AUG | 24    TIME: 14:56</div>
+        <div class="header">
+            <h1>SALES FEEDBACK</h1>
+        </div>
+    </div>
+
+    <div class="feedback-item" onclick="toggleContent('personal-connection')">
+        <img src="personal_connection.png" alt="Personal Connection">
+    </div>
+    <div id="personal-connection" class="feedback-content">
+        <!-- Content for Personal Connection -->
+    </div>
+
+    <div class="feedback-item" onclick="toggleContent('customer-needs')">
+        <img src="customer_needs.png" alt="Customer needs">
+    </div>
+    <div id="customer-needs" class="feedback-content">
+        <!-- Content for Customer needs -->
+    </div>
+
+    <div class="feedback-item" onclick="toggleContent('presentation')">
+        <img src="presentation.png" alt="Presentation">
+    </div>
+    <div id="presentation" class="feedback-content">
+        <!-- Content for Presentation -->
+    </div>
+
+    <div class="feedback-item" onclick="toggleContent('handling-resistance')">
+        <img src="handling_resistance.png" alt="Handling resistance">
+    </div>
+    <div id="handling-resistance" class="feedback-content">
+        <!-- Content for Handling resistance -->
+    </div>
+
+    <div class="feedback-item" onclick="toggleContent('closing-intentions')">
+        <img src="closing_intentions.png" alt="Closing intentions">
+    </div>
+    <div id="closing-intentions" class="feedback-content">
+        <!-- Content for Closing intentions -->
+    </div>
+
+    <div class="feedback-item" onclick="toggleContent('general')">
+        <img src="general.png" alt="General">
+    </div>
+    <div id="general" class="feedback-content">
+        <!-- Content for General -->
+    </div>
+
+    <script>
+        function toggleContent(id) {
+            var content = document.getElementById(id);
+            if (content.style.display === "block") {
+                content.style.display = "none";
+            } else {
+                content.style.display = "block";
+            }
+        }
+    </script>
+</body>
+</html>
