@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sales Feedback</title>
+    <title>Retail AI</title>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
         body {
             font-family: Arial, sans-serif;
             background-color: black;
@@ -15,21 +16,25 @@
         }
         .header-container {
             background-color: #00b8ff;
-            padding: 10px;
+            padding: 20px;
             position: fixed;
             top: 0;
             left: 0;
             right: 0;
             z-index: 1000;
-            transform: scale(0.9); /* Reduce size by 10% */
             transform-origin: top center;
         }
         .header {
             text-align: center;
+            letter-spacing: 0.05em;
+            font-family: 'Bebas Neue', sans-serif;
         }
+
         .header h1 {
             margin: 0;
-            font-size: 24px; /* Adjust as needed */
+            letter-spacing: 0.05em;
+            font-size: 48px; /* Adjust as needed */
+            font-family: 'Bebas Neue', sans-serif;
         }
         .feedback-item {
             cursor: pointer;
@@ -54,10 +59,71 @@
             font-size: 14px; /* Adjust as needed */
         }
         .feedback-item img {
-            width: 50%;
+            width: 40%;
             height: auto;
             display: block;
             margin: 0 auto;
+        }
+        .audio-player {
+            width: 100%;
+            margin-top: 10px;
+        }
+        #personal-connection {
+            display: none;
+            padding: 20px;
+            background-color: #191919;
+            border-radius: 10px;
+        }
+
+        h2 {
+            color: white;
+            margin-bottom: 10px;
+        }
+        h2::before {
+            content: "►";
+            color: #3498db;
+            margin-right: 5px;
+        }
+
+        ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        li {
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+
+        li::before {
+            content: "";
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: #e74c3c;
+            margin-right: 10px;
+        }
+
+        .show-more {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .chart-container {
+            text-align: right;
+            margin-top: 20px;
+        }
+
+        .chart-text {
+            fill: white;
+            font-family: Arial, sans-serif;
         }
     </style>
 </head>
@@ -68,12 +134,37 @@
             <h1>SALES FEEDBACK</h1>
         </div>
     </div>
-
+    <audio controls class="audio-player">
+        <source src="How-to-Overcome-the-Price-Objection.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
     <div class="feedback-item" onclick="toggleContent('personal-connection')">
         <img src="personal_connection.png" alt="Personal Connection">
     </div>
     <div id="personal-connection" class="feedback-content">
-        <!-- Content for Personal Connection -->
+        <h2>Pros:</h2>
+        <ul>
+            <li>Self introduction</li>
+            <li>Mentioning loyalty for the brand</li>
+        </ul>
+        <button onclick="showMore()">show more</button>
+
+        <h2>Improve:</h2>
+        <ul>
+            <li>Share about personal life</li>
+            <li>Offer refreshments</li>
+        </ul>
+
+        <div class="chart-container">
+            <svg width="200" height="200">
+                <circle cx="100" cy="100" r="90" fill="none" stroke="#000" stroke-width="20"/>
+                <circle cx="100" cy="100" r="90" fill="none" stroke="#ff69b4" stroke-width="20" stroke-dasharray="198.97 565.48" stroke-dashoffset="0"/>
+                <circle cx="100" cy="100" r="90" fill="none" stroke="#1e90ff" stroke-width="20" stroke-dasharray="367.57 565.48" stroke-dashoffset="-198.97"/>
+                <text x="100" y="100" text-anchor="middle" dy=".3em" font-size="16">Personal Connection</text>
+                <text x="50" y="180" text-anchor="middle" font-size="16">35%</text>
+                <text x="150" y="180" text-anchor="middle" font-size="16">65%</text>
+            </svg>
+        </div>
     </div>
 
     <div class="feedback-item" onclick="toggleContent('customer-needs')">
