@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Retail AI</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+        body {
+            font-family: Arial, sans-serif;
+            background-color: black;
+            color: white;
+            margin: 0;
+            padding: 0;
+            margin-top: 170px;
+        }
+        .header-container {
+            background-color: #00b8ff;
+            padding: 20px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            display: flex;
+            justify-content: center;
+            font-family: 'Bebas Neue', sans-serif;
+        }
+        .date-time {
+            position: absolute;
+            right: 4%;
+            top: 30%;
+            transform: translateY(-50%);
+            font-size: 24px;
+        }
+        .header {
+            display: flex;
+            letter-spacing: 0.07em;
+            font-size: 52px;
+            border-top: 2px solid white;
+            border-bottom: 2px solid white;
+        }
+        .audio-player {
+            width: 100%;
+            border-radius: 5px;
+            position: fixed;
+            top: 115px;
+            left: 0;
+            z-index: 1000;
+            background-color: #000000;
+        }
+        .audio-player audio {
+          width: 100%;
+          background-color: #000000;
+        }
+        .feedback-items {
+            position: absolute;
+            width: 100%;
+            max-height: 100%;
+            overflow-y: auto;
+            transition: transform 0.3s ease;
+        }
+        .feedback-item {
+            cursor: pointer;
+            margin: 10px 0;
+            padding: 10px;
+            background-color: rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .feedback-item:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+        .feedback-content {
+            display: none;
+            align-items: center;
+            padding: 10px;
+            background-color: rgba(255, 255, 255, 0.05);
+        }
+        .feedback-item img {
+            width: 40%;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+        }
+        .content-wrapper {
+          display: flex;
+          width: 100%;
+          align-items: center;
+        }
+        .text-content {
+          flex: 1;
+        }
+        #personal-connection {
+            display: none;
+            padding: 20px;
+            background-color: #191919;
+            border-radius: 10px;
+        }
+
+        h2 {
+            color: white;
+            margin-bottom: 10px;
+        }
+        h2::before {
+            content: "►";
+            color: #3498db;
+            margin-right: 5px;
+        }
+
+        ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        li {
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+
+        li::before {
+            content: "";
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: #e74c3c;
+            margin-right: 10px;
+        }
+
+        .show-more {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .chart-container {
+            position: relative;
+            text-align: right;
+            margin-top: 20px;
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .chart-container svg {
+          width: 200px;
+          height: 200px;
+        }
+        .chart-container text {
+            fill: white;
+        }
+        .feedback-content .text-content h2 {
+            margin-left: 0;
+        }
+        .feedback-content .text-content p,
+        .feedback-content .text-content ul {
+            margin-left: 10px;
+        }
+        .chart-text {
+            fill: white;
+            font-family: Arial, sans-serif;
+        }
+        #screen-down-image {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+        }
+    </style>
+</head>
+<body>
+    <div class="header-container">
+        <div class="date-time">DATE: 10 | AUG | 24    TIME: 14:56</div>
+        <div class="header">
+            SALES FEEDBACK
+        </div>
+        <audio controls class="audio-player">
+            <source src="How-to-Overcome-the-Price-Objection.mp3" type="audio/mpeg">
+            Your browser does not support the audio element.
+        </audio>
+    </div>
+    <div class="feedback-container">
+        <div class="feedback-items">
+            <div class="feedback-item" onclick="toggleContent('personal-connection')">
+                <img src="personal_connection.png" alt="Personal Connection">
+            </div>
+            <div id="personal-connection" class="feedback-content">
+              <div class="content-wrapper">
+                <div class="text-content">
+                    <h2>Pros:</h2>
+                    <ul>
+                        <li>Self introduction</li>
+                        <li>Mentioning loyalty for the brand</li>
+                    </ul>
+                    <button onclick="showMore()">show more</button>
+
+                    <h2>Improve:</h2>
+                    <ul>
+                        <li>Share about personal life</li>
+                        <li>Offer refreshments</li>
+                    </ul>
+                </div>
+                <div class="chart-container">
+                    <div class="percentage left">65%</div>
+                    <svg width="200" height="200">
+                        <circle cx="100" cy="100" r="90" fill="none" stroke="#000" stroke-width="20"/>
+                        <circle cx="100" cy="100" r="90" fill="none" stroke="#ff1464" stroke-width="20" stroke-dasharray="198.97 565.48" stroke-dashoffset="0"/>
+                        <circle cx="100" cy="100" r="90" fill="none" stroke="#50bcfc" stroke-width="20" stroke-dasharray="367.57 565.48" stroke-dashoffset="-198.97"/>
+                        <text x="100" y="100" text-anchor="middle" dy=".3em" font-size="16">Personal Connection</text>
+                    </svg>
+                    <div class="percentage right">35%</div>
+                </div>
+            </div>
+        </div>
+
+            <div class="feedback-item" onclick="toggleContent('customer-needs')">
+                <img src="customer_needs.png" alt="Customer needs">
+            </div>
+            <div id="customer-needs" class="feedback-content">
+                <!-- Content for Customer needs -->
+            </div>
+
+            <div class="feedback-item" onclick="toggleContent('presentation')">
+                <img src="presentation.png" alt="Presentation">
+            </div>
+            <div id="presentation" class="feedback-content">
+                <!-- Content for Presentation -->
+            </div>
+
+            <div class="feedback-item" onclick="toggleContent('handling-resistance')">
+                <img src="handling_resistance.png" alt="Handling resistance">
+            </div>
+            <div id="handling-resistance" class="feedback-content">
+                <!-- Content for Handling resistance -->
+            </div>
+
+            <div class="feedback-item" onclick="toggleContent('closing-intentions')">
+                <img src="closing_intentions.png" alt="Closing intentions">
+            </div>
+            <div id="closing-intentions" class="feedback-content">
+                <!-- Content for Closing intentions -->
+            </div>
+
+            <div class="feedback-item" onclick="toggleContent('general')">
+                <img src="general.png" alt="General">
+            </div>
+            <div id="general" class="feedback-content">
+                <!-- Content for General -->
+            </div>
+        </div>
+    </div>
+    <img src="screen DOWN.png" alt="Screen Down" id="screen-down-image">
+    <script>
+        function toggleContent(id) {
+            var content = document.getElementById(id);
+            if (content.style.display === "block") {
+                content.style.display = "none";
+            } else {
+                content.style.display = "block";
+            }
+        }
+    </script>
+</body>
+</html>
