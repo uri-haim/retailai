@@ -178,6 +178,50 @@
             width: 100%;
             z-index: 1000;
         }
+
+        .feedback-container {
+            overflow-y: auto;
+            max-height: 80vh;
+        }
+        .feedback-content.active {
+             display: block;
+        }
+        .show-more {
+            background-color: #00b8ff;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 15px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: bold;
+            text-transform: lowercase;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            transition: background-color 0.3s ease;
+        }
+
+        .show-more:hover {
+            background-color: #0095cc;
+        }
+        .hidden {
+            display: none;
+        }
+.jump-button {
+    background-color: #00b8ff;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 24px;
+    height: 24px;
+    font-size: 12px;
+    cursor: pointer;
+    margin-left: 10px;
+    transition: background-color 0.3s ease;
+}
+
+.jump-button:hover {
+    background-color: #0095cc;
+}
     </style>
 </head>
 <body>
@@ -200,11 +244,13 @@
               <div class="content-wrapper">
                 <div class="text-content">
                     <h2>Pros:</h2>
-                    <ul>
-                        <li>Self introduction</li>
-                        <li>Mentioning loyalty for the brand</li>
-                    </ul>
-                    <button onclick="showMore()">show more</button>
+                        <ul id="pros-list">
+                            <li>Self introduction <button class="jump-button">▶</button></li>
+                            <li>Mentioning loyalty for the brand <button class="jump-button">▶</button></li>
+                            <li class="hidden">Asked the customer how is he doing <button class="jump-button">▶</button></li>
+                            <li class="hidden">Self introduction <button class="jump-button">▶</button></li>
+                        </ul>
+                        <button id="toggle-pros" class="show-more" onclick="togglePros()">Show more</button>
 
                     <h2>Improve:</h2>
                     <ul>
@@ -213,14 +259,14 @@
                     </ul>
                 </div>
                 <div class="chart-container">
-                    <div class="percentage left">65%</div>
+                    <div class="percentage left">60%</div>
                     <svg width="200" height="200">
                         <circle cx="100" cy="100" r="90" fill="none" stroke="#000" stroke-width="20"/>
                         <circle cx="100" cy="100" r="90" fill="none" stroke="#ff1464" stroke-width="20" stroke-dasharray="198.97 565.48" stroke-dashoffset="0"/>
                         <circle cx="100" cy="100" r="90" fill="none" stroke="#50bcfc" stroke-width="20" stroke-dasharray="367.57 565.48" stroke-dashoffset="-198.97"/>
                         <text x="100" y="100" text-anchor="middle" dy=".3em" font-size="16">Personal Connection</text>
                     </svg>
-                    <div class="percentage right">35%</div>
+                    <div class="percentage right">40%</div>
                 </div>
             </div>
         </div>
@@ -271,6 +317,33 @@
                 content.style.display = "block";
             }
         }
+        function togglePros() {
+          const prosList = document.getElementById('pros-list');
+          const toggleButton = document.getElementById('toggle-pros');
+          const hiddenItems = prosList.querySelectorAll('.hidden');
+
+          hiddenItems.forEach(item => {
+            if (item.style.display === 'none' || item.style.display === '') {
+              item.style.display = 'list-item';
+              toggleButton.textContent = 'Show less';
+            } else {
+              item.style.display = 'none';
+              toggleButton.textContent = 'Show more';
+            }
+          });
+        }
+document.addEventListener('DOMContentLoaded', function() {
+    const audioPlayer = document.querySelector('.audio-player');
+    const jumpButtons = document.querySelectorAll('.jump-button');
+
+    jumpButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            const randomTime = Math.random() * audioPlayer.duration;
+            audioPlayer.currentTime = randomTime;
+            audioPlayer.play();
+        });
+    });
+});
     </script>
 </body>
 </html>
