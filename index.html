@@ -9,14 +9,15 @@
         html, body {
             height: 100%;
             overflow: hidden;
+            margin: 0;
+            padding: 0;
+
         }
         body {
             font-family: Arial, sans-serif;
             background-color: black;
             color: white;
-            margin: 0;
-            padding: 0;
-            margin-top: 170px;
+            //margin-top: 170px;
         }
         .header-container {
             background-color: #00b8ff;
@@ -25,7 +26,7 @@
             top: 0;
             left: 0;
             right: 0;
-            z-index: 1000;
+            z-index: 1001;
             display: flex;
             justify-content: center;
             font-family: 'Bebas Neue', sans-serif;
@@ -50,7 +51,7 @@
             position: fixed;
             top: 115px;
             left: 0;
-            z-index: 1000;
+            z-index: 1001;
             background-color: #000000;
         }
         .audio-player audio {
@@ -63,6 +64,7 @@
             max-height: 100%;
             overflow-y: auto;
             transition: transform 0.3s ease;
+            padding-bottom: 50px;
         }
         .feedback-item {
             cursor: pointer;
@@ -177,11 +179,17 @@
             left: 0;
             width: 100%;
             z-index: 1000;
+            pointer-events: none;
         }
 
         .feedback-container {
+            position: fixed;
+            top: 170px;
+            bottom: 0;
+            left: 0;
+            right: 0;
             overflow-y: auto;
-            max-height: 80vh;
+            padding-bottom: 50px; /* Add some padding at the bottom */
         }
         .feedback-content.active {
              display: block;
@@ -206,22 +214,22 @@
         .hidden {
             display: none;
         }
-.jump-button {
-    background-color: #00b8ff;
-    color: white;
-    border: none;
-    border-radius: 50%;
-    width: 24px;
-    height: 24px;
-    font-size: 12px;
-    cursor: pointer;
-    margin-left: 10px;
-    transition: background-color 0.3s ease;
-}
+        .jump-button {
+            background-color: #00b8ff;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 24px;
+            height: 24px;
+            font-size: 12px;
+            cursor: pointer;
+            margin-left: 10px;
+            transition: background-color 0.3s ease;
+        }
 
-.jump-button:hover {
-    background-color: #0095cc;
-}
+        .jump-button:hover {
+            background-color: #0095cc;
+        }
     </style>
 </head>
 <body>
@@ -332,18 +340,18 @@
             }
           });
         }
-document.addEventListener('DOMContentLoaded', function() {
-    const audioPlayer = document.querySelector('.audio-player');
-    const jumpButtons = document.querySelectorAll('.jump-button');
+        document.addEventListener('DOMContentLoaded', function() {
+            const audioPlayer = document.querySelector('.audio-player');
+            const jumpButtons = document.querySelectorAll('.jump-button');
 
-    jumpButtons.forEach(button => {
-        button.addEventListener('click', function() {
-            const randomTime = Math.random() * audioPlayer.duration;
-            audioPlayer.currentTime = randomTime;
-            audioPlayer.play();
+            jumpButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const randomTime = Math.random() * audioPlayer.duration;
+                    audioPlayer.currentTime = randomTime;
+                    audioPlayer.play();
+                });
+            });
         });
-    });
-});
     </script>
 </body>
 </html>
