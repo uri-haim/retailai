@@ -230,6 +230,13 @@
         .jump-button:hover {
             background-color: #0095cc;
         }
+        .play-pause-btn {
+            cursor: pointer;
+            background: none;
+            border: none;
+            font-size: 1.2em;
+            margin-right: 5px;
+        }
     </style>
 </head>
 <body>
@@ -255,14 +262,14 @@
                         <ul id="pros-list">
                             <li>Self introduction <button class="jump-button">▶</button></li>
                             <li>Mentioning loyalty for the brand <button class="jump-button">▶</button></li>
-                            <li class="hidden">Asked the customer how is he doing <button class="jump-button">▶</button></li>
-                            <li class="hidden">Self introduction <button class="jump-button">▶</button></li>
+                            <li class="hidden">Created pleasant atmosphere <button class="jump-button">▶</button></li>
+                            <li class="hidden">Engaging same level conversation <button class="jump-button">▶</button></li>
                         </ul>
                         <button id="toggle-pros" class="show-more" onclick="togglePros()">Show more</button>
 
                     <h2>Improve:</h2>
                     <ul>
-                        <li>Share about personal life</li>
+                        <li>Share more about personal life</li>
                         <li>Offer refreshments</li>
                     </ul>
                 </div>
@@ -277,13 +284,40 @@
                     <div class="percentage right">40%</div>
                 </div>
             </div>
-        </div>
+            </div>
 
             <div class="feedback-item" onclick="toggleContent('customer-needs')">
                 <img src="customer_needs.png" alt="Customer needs">
             </div>
             <div id="customer-needs" class="feedback-content">
-                <!-- Content for Customer needs -->
+              <div class="content-wrapper">
+                <div class="text-content">
+                    <h2>Pros:</h2>
+                        <ul id="pros-list">
+                            <li>Asked what is his current vehicle <button class="jump-button">▶</button></li>
+                            <li>Asked about gasoline/EV preferance <button class="jump-button">▶</button></li>
+                        </ul>
+
+                    <h2>Improve:</h2>
+                        <ul id="cons-list">
+                            <li>Ask about safety preferances</li>
+                            <li>Ask about who are the people that will drive the car</li>
+                            <li class="hidden">Ask about the living place and location</li>
+                            <li class="hidden">Ask about what is the current car is used for</li>
+                            <button id="toggle-cons" class="show-more" onclick="toggleCons()">Show more</button>
+                        </ul>
+                </div>
+                <div class="chart-container">
+                    <div class="percentage left">70%</div>
+                    <svg width="200" height="200">
+                        <circle cx="100" cy="100" r="90" fill="none" stroke="#000" stroke-width="20"/>
+                        <circle cx="100" cy="100" r="90" fill="none" stroke="#ff1464" stroke-width="20" stroke-dasharray="410 565.48" stroke-dashoffset="0"/>
+                        <circle cx="100" cy="100" r="90" fill="none" stroke="#50bcfc" stroke-width="20" stroke-dasharray="155 565.48" stroke-dashoffset="-410"/>
+                        <text x="100" y="100" text-anchor="middle" dy=".3em" font-size="16">Personal Connection</text>
+                    </svg>
+                    <div class="percentage right">30%</div>
+                </div>
+            </div>
             </div>
 
             <div class="feedback-item" onclick="toggleContent('presentation')">
@@ -340,15 +374,39 @@
             }
           });
         }
+        function toggleCons() {
+          const prosList = document.getElementById('cons-list');
+          const toggleButton = document.getElementById('toggle-cons');
+          const hiddenItems = prosList.querySelectorAll('.hidden');
+
+          hiddenItems.forEach(item => {
+            if (item.style.display === 'none' || item.style.display === '') {
+              item.style.display = 'list-item';
+              toggleButton.textContent = 'Show less';
+            } else {
+              item.style.display = 'none';
+              toggleButton.textContent = 'Show more';
+            }
+          });
+        }
+
+        function togglePlayPause(button) {
+        }
         document.addEventListener('DOMContentLoaded', function() {
             const audioPlayer = document.querySelector('.audio-player');
             const jumpButtons = document.querySelectorAll('.jump-button');
 
             jumpButtons.forEach(button => {
                 button.addEventListener('click', function() {
-                    const randomTime = Math.random() * audioPlayer.duration;
-                    audioPlayer.currentTime = randomTime;
-                    audioPlayer.play();
+                    if (audioPlayer.paused) {
+                        const randomTime = Math.random() * audioPlayer.duration;
+                        audioPlayer.currentTime = randomTime;
+                        audioPlayer.play();
+                        button.textContent = '| |'; // Change to pause symbol
+                    } else {
+                        audioPlayer.pause();
+                        button.textContent = '▶'; // Change back to play symbol
+                    }
                 });
             });
         });
