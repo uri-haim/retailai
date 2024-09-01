@@ -259,13 +259,13 @@
               <div class="content-wrapper">
                 <div class="text-content">
                     <h2>Pros:</h2>
-                        <ul id="pros-list">
+                        <ul id="personal-connection-pros-list">
                             <li>Self introduction <button class="jump-button">▶</button></li>
                             <li>Mentioning loyalty for the brand <button class="jump-button">▶</button></li>
                             <li class="hidden">Created pleasant atmosphere <button class="jump-button">▶</button></li>
                             <li class="hidden">Engaging same level conversation <button class="jump-button">▶</button></li>
                         </ul>
-                        <button id="toggle-pros" class="show-more" onclick="togglePros()">Show more</button>
+                        <button id="personal-connection-toggle-pros" class="show-more" onclick="togglePros('personal-connection')">Show more</button>
 
                     <h2>Improve:</h2>
                     <ul>
@@ -295,16 +295,17 @@
                     <h2>Pros:</h2>
                         <ul id="pros-list">
                             <li>Asked what is his current vehicle <button class="jump-button">▶</button></li>
-                            <li>Asked about gasoline/EV preferance <button class="jump-button">▶</button></li>
+                            <li>Asked about gasoline/EV preference <button class="jump-button">▶</button></li>
                         </ul>
 
                     <h2>Improve:</h2>
-                        <ul id="cons-list">
-                            <li>Ask about safety preferances</li>
+                        <ul id="customer-needs-cons-list">
+                            <li>Ask about safety preferences</li>
                             <li>Ask about who are the people that will drive the car</li>
                             <li class="hidden">Ask about the living place and location</li>
                             <li class="hidden">Ask about what is the current car is used for</li>
-                            <button id="toggle-cons" class="show-more" onclick="toggleCons()">Show more</button>
+                            <li class="hidden">Find out how much the customer is willing to pay</li>
+                            <button id="customer-needs-toggle-cons" class="show-more" onclick="toggleCons('customer-needs')">Show more</button>
                         </ul>
                 </div>
                 <div class="chart-container">
@@ -324,7 +325,39 @@
                 <img src="presentation.png" alt="Presentation">
             </div>
             <div id="presentation" class="feedback-content">
-                <!-- Content for Presentation -->
+              <div class="content-wrapper">
+                <div class="text-content">
+                    <h2>Pros:</h2>
+                        <ul id="presentation-pros-list">
+                            <li>Presented a variety of models <button class="jump-button">▶</button></li>
+                            <li>Went straight to the customer preference  <button class="jump-button">▶</button></li>
+                            <li class="hidden">Engaged in dialogue during the presentation <button class="jump-button">▶</button></li>
+                            <li class="hidden">Presenting the product with enthusiasm  <button class="jump-button">▶</button></li>
+                            <li class="hidden">Shows that the product features align with the benefits sought by the customer  <button class="jump-button">▶</button></li>
+                            <li class="hidden">Exciting the customer while presenting the product  <button class="jump-button">▶</button></li>
+                            <button id="presentation-toggle-pros" class="show-more" onclick="togglePros('presentation')">Show more</button>
+                        </ul>
+
+                    <h2>Improve:</h2>
+                        <ul id="presentation-cons-list">
+                            <li>Focus. he customer diverted the conversation, and it caused you to stray into irrelevant topics</li>
+                            <li>Call for action</li>
+                            <li class="hidden">Improve the dialogue, let the client talk more</li>
+                            <button id="presentation-toggle-cons" class="show-more" onclick="toggleCons('presentation')">Show more</button>
+                        </ul>
+                </div>
+                <div class="chart-container">
+                    <div class="percentage left">70%</div>
+                    <svg width="200" height="200">
+                        <circle cx="100" cy="100" r="90" fill="none" stroke="#000" stroke-width="20"/>
+                        <circle cx="100" cy="100" r="90" fill="none" stroke="#ff1464" stroke-width="20" stroke-dasharray="198.97 565.48" stroke-dashoffset="0"/>
+                        <circle cx="100" cy="100" r="90" fill="none" stroke="#50bcfc" stroke-width="20" stroke-dasharray="367.57 565.48" stroke-dashoffset="-198.97"/>
+                        <text x="100" y="100" text-anchor="middle" dy=".3em" font-size="16">Product presentation</text>
+                    </svg>
+                    <div class="percentage right">30%</div>
+                </div>
+            </div>
+
             </div>
 
             <div class="feedback-item" onclick="toggleContent('handling-resistance')">
@@ -359,9 +392,9 @@
                 content.style.display = "block";
             }
         }
-        function togglePros() {
-          const prosList = document.getElementById('pros-list');
-          const toggleButton = document.getElementById('toggle-pros');
+        function togglePros(ul) {
+          const prosList = document.getElementById(ul+'-pros-list');
+          const toggleButton = document.getElementById(ul+'-toggle-pros');
           const hiddenItems = prosList.querySelectorAll('.hidden');
 
           hiddenItems.forEach(item => {
@@ -374,9 +407,9 @@
             }
           });
         }
-        function toggleCons() {
-          const prosList = document.getElementById('cons-list');
-          const toggleButton = document.getElementById('toggle-cons');
+        function toggleCons(ul) {
+          const prosList = document.getElementById(ul+'-cons-list');
+          const toggleButton = document.getElementById(ul+'-toggle-cons');
           const hiddenItems = prosList.querySelectorAll('.hidden');
 
           hiddenItems.forEach(item => {
