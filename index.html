@@ -350,8 +350,8 @@
                     <div class="percentage left">70%</div>
                     <svg width="200" height="200">
                         <circle cx="100" cy="100" r="90" fill="none" stroke="#000" stroke-width="20"/>
-                        <circle cx="100" cy="100" r="90" fill="none" stroke="#ff1464" stroke-width="20" stroke-dasharray="198.97 565.48" stroke-dashoffset="0"/>
-                        <circle cx="100" cy="100" r="90" fill="none" stroke="#50bcfc" stroke-width="20" stroke-dasharray="367.57 565.48" stroke-dashoffset="-198.97"/>
+                        <circle cx="100" cy="100" r="90" fill="none" stroke="#ff1464" stroke-width="20" stroke-dasharray="190 565.48" stroke-dashoffset="0"/>
+                        <circle cx="100" cy="100" r="90" fill="none" stroke="#50bcfc" stroke-width="20" stroke-dasharray="360 565.48" stroke-dashoffset="-198.97"/>
                         <text x="100" y="100" text-anchor="middle" dy=".3em" font-size="16">Product presentation</text>
                     </svg>
                     <div class="percentage right">30%</div>
@@ -364,7 +364,37 @@
                 <img src="handling_resistance.png" alt="Handling resistance">
             </div>
             <div id="handling-resistance" class="feedback-content">
-                <!-- Content for Handling resistance -->
+              <div class="content-wrapper">
+                <div class="text-content">
+                    <h2>Pros:</h2>
+                        <ul id="handling-resistance-pros-list">
+                            <li>Addressed the client's objections, avoided conflict, and praised their challenging questions <button class="jump-button">▶</button></li>
+                            <li>Turned objection into reason to buy  <button class="jump-button">▶</button></li>
+                        </ul>
+
+                    <h2>Improve:</h2>
+                        <ul id="handling-resistance-cons-list">
+                            <li>Summarize objection, reaffirm, and call to action</li>
+                            <li>Ask questions about the objection root cause</li>
+                            <li class="hidden">Offer creative solutions for financing</li>
+                            <li class="hidden">Go back to the places where there was agreement, and then return to product presentation </li>
+                            <li class="hidden">Take the conversation away from the reasons to resist, and mention the product relevant advantages </li>
+                            <button id="handling-resistance-toggle-cons" class="show-more" onclick="toggleCons('handling-resistance')">Show more</button>
+                        </ul>
+                </div>
+                <div class="chart-container">
+                    <div class="percentage left">25%</div>
+                    <svg width="200" height="200">
+                        <circle cx="100" cy="100" r="90" fill="none" stroke="#000" stroke-width="20"/>
+                        <circle cx="100" cy="100" r="90" fill="none" stroke="#50bcfc" stroke-width="20" stroke-dasharray="125 565.48" stroke-dashoffset="0"/>
+                        <circle cx="100" cy="100" r="90" fill="none" stroke="#ff1464" stroke-width="20" stroke-dasharray="430 565.48" stroke-dashoffset="-130"/>
+                        <text x="100" y="100" text-anchor="middle" dy=".3em" font-size="16">Product presentation</text>
+                    </svg>
+                    <div class="percentage right">75%</div>
+                </div>
+            </div>
+
+
             </div>
 
             <div class="feedback-item" onclick="toggleContent('closing-intentions')">
