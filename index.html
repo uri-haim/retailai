@@ -264,8 +264,9 @@
                             <li>Mentioning loyalty for the brand <button class="jump-button">▶</button></li>
                             <li class="hidden">Created pleasant atmosphere <button class="jump-button">▶</button></li>
                             <li class="hidden">Engaging same level conversation <button class="jump-button">▶</button></li>
+                            <button id="personal-connection-toggle-pros" class="show-more" onclick="togglePros('personal-connection')">Show more</button>
                         </ul>
-                        <button id="personal-connection-toggle-pros" class="show-more" onclick="togglePros('personal-connection')">Show more</button>
+
 
                     <h2>Improve:</h2>
                     <ul>
@@ -314,7 +315,7 @@
                         <circle cx="100" cy="100" r="90" fill="none" stroke="#000" stroke-width="20"/>
                         <circle cx="100" cy="100" r="90" fill="none" stroke="#ff1464" stroke-width="20" stroke-dasharray="410 565.48" stroke-dashoffset="0"/>
                         <circle cx="100" cy="100" r="90" fill="none" stroke="#50bcfc" stroke-width="20" stroke-dasharray="155 565.48" stroke-dashoffset="-410"/>
-                        <text x="100" y="100" text-anchor="middle" dy=".3em" font-size="16">Personal Connection</text>
+                        <text x="100" y="100" text-anchor="middle" dy=".3em" font-size="16">Costumer Needs</text>
                     </svg>
                     <div class="percentage right">30%</div>
                 </div>
@@ -352,7 +353,7 @@
                         <circle cx="100" cy="100" r="90" fill="none" stroke="#000" stroke-width="20"/>
                         <circle cx="100" cy="100" r="90" fill="none" stroke="#ff1464" stroke-width="20" stroke-dasharray="190 565.48" stroke-dashoffset="0"/>
                         <circle cx="100" cy="100" r="90" fill="none" stroke="#50bcfc" stroke-width="20" stroke-dasharray="360 565.48" stroke-dashoffset="-198.97"/>
-                        <text x="100" y="100" text-anchor="middle" dy=".3em" font-size="16">Product presentation</text>
+                        <text x="100" y="100" text-anchor="middle" dy=".3em" font-size="16">Product Presentation</text>
                     </svg>
                     <div class="percentage right">30%</div>
                 </div>
@@ -388,7 +389,7 @@
                         <circle cx="100" cy="100" r="90" fill="none" stroke="#000" stroke-width="20"/>
                         <circle cx="100" cy="100" r="90" fill="none" stroke="#50bcfc" stroke-width="20" stroke-dasharray="125 565.48" stroke-dashoffset="0"/>
                         <circle cx="100" cy="100" r="90" fill="none" stroke="#ff1464" stroke-width="20" stroke-dasharray="430 565.48" stroke-dashoffset="-130"/>
-                        <text x="100" y="100" text-anchor="middle" dy=".3em" font-size="16">Product presentation</text>
+                        <text x="100" y="100" text-anchor="middle" dy=".3em" font-size="16">Handling Resistance</text>
                     </svg>
                     <div class="percentage right">75%</div>
                 </div>
@@ -401,7 +402,36 @@
                 <img src="closing_intentions.png" alt="Closing intentions">
             </div>
             <div id="closing-intentions" class="feedback-content">
-                <!-- Content for Closing intentions -->
+              <div class="content-wrapper">
+                <div class="text-content">
+                    <h2>Pros:</h2>
+                        <ul id="closing-intentions-pros-list">
+                            <li>Reinforced the customer’s recall and preferences within the value proposition <button class="jump-button">▶</button></li>
+                            <li>After identifying the root cause of the customer’s hesitation, you avoided pressure and sought a follow-up meeting  <button class="jump-button">▶</button></li>
+                            <li class="hidden">You became a trusted advisor for the customer’s concerns, including recommendations on other vendors’ products <button class="jump-button">▶</button></li>
+                            <button id="closing-intentions-toggle-pros" class="show-more" onclick="togglePros('closing-intentions')">Show more</button>
+                        </ul>
+
+                    <h2>Improve:</h2>
+                        <ul id="closing-intentions-cons-list">
+                            <li>Find out if the customer visited other vendors or plans to do it earlier in the conversation</li>
+                            <li>Find out if the customer needs financing earlier in the conversation</li>
+                            <li class="hidden">Offer creative solutions for financing</li>
+                            <li class="hidden">Schedule the follow-up meeting or call at a specified time </li>
+                            <button id="closing-intentions-toggle-cons" class="show-more" onclick="toggleCons('closing-intentions')">Show more</button>
+                        </ul>
+                </div>
+                <div class="chart-container">
+                    <div class="percentage left">45%</div>
+                    <svg width="200" height="200">
+                        <circle cx="100" cy="100" r="90" fill="none" stroke="#000" stroke-width="20"/>
+                        <circle cx="100" cy="100" r="90" fill="none" stroke="#ff1464" stroke-width="20" stroke-dasharray="320 565.48" stroke-dashoffset="0"/>
+                        <circle cx="100" cy="100" r="90" fill="none" stroke="#50bcfc" stroke-width="20" stroke-dasharray="330 565.48" stroke-dashoffset="-280"/>
+                        <text x="100" y="100" text-anchor="middle" dy=".3em" font-size="16">Closing Intentions</text>
+                    </svg>
+                    <div class="percentage right">55%</div>
+                </div>
+              </div>
             </div>
 
             <div class="feedback-item" onclick="toggleContent('general')">
